@@ -24,7 +24,7 @@
     <mvc:resources mapping="/js/**" location="/WEB-INF/js/"/>
     <mvc:resources mapping="/admin/**" location="/WEB-INF/admin/"/>
     <mvc:resources mapping="/image/**" location="/WEB-INF/image/"/>
-
+    <mvc:resources mapping="/jsp/ignore/**" location="/WEB-INF/jsp/ignore/**"/>
     <!-- 配置jsp 显示ViewResolver-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>

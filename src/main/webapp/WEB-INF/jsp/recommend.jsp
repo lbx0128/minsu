@@ -11,9 +11,10 @@
 <head>
     <title>今日推荐</title>
     <link href="${pageContext.request.contextPath}/css/recommend.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/search.css" type="text/css">
 </head>
 <body>
-
+<%@ include file="ignore/search.jsp" %>
 <div class="recommend">
     <div style="text-align: center">
         <div class="recommend_top">今日推荐</div>
