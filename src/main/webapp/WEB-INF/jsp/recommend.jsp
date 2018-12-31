@@ -24,7 +24,7 @@
             <div class="hotel_one">
                 <div class="hotel">
                     <div class="recommend_img">
-                        <img src=${hotelSixInfo.hotelImage} width=150 length=150>
+                        <img class="recommend_img" src=${hotelSixInfo.hotelImage} width=150 length=150>
                     </div>
                     <div class="recommend_describe">
                         <span class="city_span">地点：${hotelSixInfo.hotelCity}</span>
@@ -40,7 +40,7 @@
             <div class="hotel_two">
                 <div class="hotel">
                     <div class="recommend_img">
-                        <img src=${hotelSixInfo.hotelImage} width=150 length=150>
+                        <img class="recommend_img" src=${hotelSixInfo.hotelImage} width=150 length=150>
                     </div>
                     <div class="recommend_describe">
                         <span class="city_span">地点：${hotelSixInfo.hotelCity}</span>
@@ -57,7 +57,7 @@
 
                 <div class="hotel">
                     <div class="recommend_img">
-                        <img src=${hotelSixInfo.hotelImage} width=150 length=150>
+                        <img class="recommend_img" src=${hotelSixInfo.hotelImage} width=150 length=150>
                     </div>
                     <div class="recommend_describe">
                         <span class="city_span">地点：${hotelSixInfo.hotelCity}</span>
@@ -73,7 +73,7 @@
             <div class="hotel_four">
                 <div class="hotel">
                     <div class="recommend_img">
-                        <img src=${hotelSixInfo.hotelImage} width=150 length=150>
+                        <img class="recommend_img" src=${hotelSixInfo.hotelImage} width=150 length=150>
                     </div>
                     <div class="recommend_describe">
                         <span class="city_span">地点：${hotelSixInfo.hotelCity}</span>
@@ -89,7 +89,7 @@
             <div class="hotel_five">
                 <div class="hotel">
                     <div class="recommend_img">
-                        <img src=${hotelSixInfo.hotelImage} width=150 length=150>
+                        <img class="recommend_img" src=${hotelSixInfo.hotelImage} width=150 length=150>
                     </div>
                     <div class="recommend_describe">
                         <span class="city_span">地点：${hotelSixInfo.hotelCity}</span>
@@ -105,7 +105,7 @@
         <div class="hotel_six">
             <div class="hotel">
                 <div class="recommend_img">
-                    <img src=${hotelSixInfo.hotelImage} width=150 length=150>
+                    <img class="recommend_img" src=${hotelSixInfo.hotelImage} width=150 length=150>
                 </div>
                 <div class="recommend_describe">
                     <span class="city_span">地点：${hotelSixInfo.hotelCity}</span>
