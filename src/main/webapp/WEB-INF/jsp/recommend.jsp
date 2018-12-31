@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/search.css" type="text/css">
 </head>
 <body>
-<%@ include file="ignore/search.jsp" %>
+<%@ include file="search.jsp" %>
 <div class="recommend">
     <div style="text-align: center">
         <div class="recommend_top">今日推荐</div>

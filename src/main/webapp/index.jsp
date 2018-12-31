@@ -23,5 +23,6 @@
 <a href="hotel/hotelinfos/1">房源信息</a>
 <a href="hotel/hotelinfos">新增房间</a>
 <a href="hotel/recommend">今日推荐</a>
+<a href="jsp/ignore/search.jsp">今日推荐</a>
 </body>
 </html>
