@@ -1,0 +1,79 @@
+.recommend_top {
+    font-size: 33px;
+    color: aqua;
+    margin-left: auto;
+    margin-right: auto;
+    position:relative;
+    top:480px;
+}
+
+.recommend_img,
+.recommend_describe {
+    border: 1px solid rgb(180, 178, 178);
+}
+
+.hotel_one,
+.hotel_two,
+.hotel_three,
+.hotel_four,
+.hotel_five,
+.hotel_six {
+    position: absolute;
+    width: 250px;
+    margin: 20px;
+    /*测试用
+            background-color: rgb(87, 16, 16);
+            */
+}
+
+.hotel {
+    display: -webkit-box;
+    padding: 5px;
+    height: 152px;
+    width: 280px;
+    /*测试用
+            background-color: rgb(43, 223, 52);
+            */
+}
+
+.hotel_one {
+    left: 20px;
+    top: 540px;
+}
+
+.hotel_two {
+    left: 420px;
+    top: 540px;
+}
+
+.hotel_three {
+    left: 820px;
+    top: 540px;
+}
+
+.hotel_four {
+    left: 20px;
+    top: 720px;
+}
+
+.hotel_five {
+    left: 420px;
+    top: 720px;
+}
+
+.hotel_six {
+    left: 820px;
+    top: 720px;
+}
+
+.city_span{
+    font-weight: bold;
+    font-size: 20px;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    -o-text-overflow: ellipsis;
+    white-space:nowrap;
+    width:240px;
+    height:24px;
+    display:block;
+}

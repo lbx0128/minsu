@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 加载数据库属性文件 -->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <!--&lt;!&ndash; 数据库连接池 c3p0 &ndash;&gt;-->
+    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
+    <!--<property name="driverClass" value="${driverClass}"/>-->
+    <!--<property name="jdbcUrl" value="${url}"/>-->
+    <!--<property name="user" value="${user}"/>-->
+    <!--<property name="password" value="${password}"/>-->
+
+    <!--<property name="initialPoolSize" value="5" />-->
+    <!--&lt;!&ndash;最大连接数&ndash;&gt;-->
+    <!--<property name="maxPoolSize" value="30"/>-->
+    <!--&lt;!&ndash;最小连接数&ndash;&gt;-->
+    <!--<property name="minPoolSize" value="10"/>-->
+    <!--&lt;!&ndash;关闭连接时提交 &ndash;&gt;-->
+    <!--<property name="autoCommitOnClose" value="false"/>-->
+    <!--&lt;!&ndash;超时 &ndash;&gt;-->
+    <!--<property name="checkoutTimeout" value="1000"/>-->
+    <!--&lt;!&ndash;重试次数&ndash;&gt;-->
+    <!--<property name="acquireRetryAttempts" value="2"/>-->
+    <!--</bean>-->
+    <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
+        <property name="driverClassName" value="${driverClass}"/>
+        <property name="jdbcUrl" value="${url}"/>
+        <property name="username" value="${user}"/>
+        <property name="password" value="${password}"/>
+
+
+        <property name="maximumPoolSize" value="20" />
+        <property name="minimumIdle" value="3" />
+
+        <property name="connectionTestQuery" value="SELECT 1" />
+        <property name="poolName" value="springHikariCP" />
+        <property name="dataSourceProperties">
+            <props>
+                <prop key="cachePrepStmts">true</prop>
+                <prop key="prepStmtCacheSize">250</prop>
+            </props>
+        </property>
+
+    </bean>
+
+    <!--<bean id="ds" class="com.alibaba.druid.pool.DruidDataSource"-->
+          <!--init-method="init" destroy-method="close">-->
+        <!--<property name="driverClassName" value="${driverClass}"/>-->
+        <!--<property name="url" value="${url}"/>-->
+        <!--<property name="username" value="${user}"/>-->
+        <!--<property name="password" value="${password}"/>-->
+
+        <!--<property name="initialSize" value="3"/>-->
+        <!--&lt;!&ndash;最大连接数&ndash;&gt;-->
+        <!--<property name="maxActive" value="20"/>-->
+        <!--&lt;!&ndash;最小连接数&ndash;&gt;-->
+        <!--<property name="minIdle" value="3"/>-->
+        <!--&lt;!&ndash; 最大等待时间 &ndash;&gt;-->
+        <!--<property name="maxWait" value="60000"/>-->
+        <!--&lt;!&ndash; 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 &ndash;&gt;-->
+        <!--<property name="timeBetweenEvictionRunsMillis" value="60000"/>-->
+
+        <!--&lt;!&ndash; 配置一个连接在池中最小生存的时间，单位是毫秒 &ndash;&gt;-->
+        <!--<property name="minEvictableIdleTimeMillis" value="300000"/>-->
+
+        <!--<property name="validationQuery" value="SELECT 1"/>-->
+        <!--<property name="testWhileIdle" value="true"/>-->
+        <!--<property name="testOnBorrow" value="false"/>-->
+        <!--<property name="testOnReturn" value="false"/>-->
+
+        <!--&lt;!&ndash; 打开PSCache，并且指定每个连接上PSCache的大小 &ndash;&gt;-->
+        <!--<property name="poolPreparedStatements" value="true"/>-->
+        <!--<property name="maxPoolPreparedStatementPerConnectionSize" value="20"/>-->
+    <!--</bean>-->
+
+    <!--配置SqlSessionFactoryBean-->
+    <bean id="sqlSessionFactoryBean"
+          class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--数据源-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--MyBatis全局文件-->
+        <property name="configLocation" value="classpath:mybatis-config.xml"/>
+        <!--扫描包, 使用别名-->
+        <property name="typeAliasesPackage" value="com.wzx.entity"/>
+        <!--扫描包, 映射文件-->
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+    </bean>
+
+    <!--扫描Dao接口包, 动态实现Dao接口-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.dai.dao"/>
+        <property name="sqlSessionFactoryBeanName"
+                  value="sqlSessionFactoryBean"/>
+    </bean>
+
+</beans>

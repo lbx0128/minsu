@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dai.dao.HotelInfoDao">
+    <select id="queryAll" resultType="HotelInfo">
+        SELECT
+          ownername, ownerphone, hotelid, hotelimage, hotelprovince,
+          hotelcity, favornum, hotelprice, hoteladdress
+        FROM
+          hotelinfo;
+    </select>
+
+    <select id="selectCount" resultType="int">
+        SELECT
+          count(*)
+        FROM
+          hotelinfo
+    </select>
+
+    <select id="queryByIndex" resultType="HotelInfo">
+        SELECT
+          ownername, ownerphone, hotelid, hotelimage, hotelprovince,
+          hotelcity, favornum, hotelprice, hoteladdress
+        FROM
+          hotelinfo
+        LIMIT
+          #{offset}, #{limit}
+    </select>
+
+    <select id="queryByAddress" resultType="HotelInfo">
+        SELECT
+          ownername, ownerphone, hotelid, hotelimage, hotelprovince,
+          hotelcity, favornum, hotelprice, hoteladdress
+        FROM
+          hotelinfo
+        WHERE
+          hotelprovince=#{prov} and hotelcity=#{city}
+    </select>
+
+    <select id="queryByPrice" resultType="HotelInfo">
+        SELECT
+          ownername, ownerphone, hotelid, hotelimage, hotelprovince,
+          hotelcity, favornum, hotelprice, hoteladdress
+        FROM
+          hotelinfo
+        WHERE
+          hotelprice BETWEEN #{lowest} AND #{highest}
+    </select>
+
+    <select id="queryById" resultType="HotelInfo">
+        SELECT
+          ownername, ownerphone, hotelid, hotelimage, hotelprovince,
+          hotelcity, favornum, hotelprice, hoteladdress
+        FROM
+          hotelinfo
+        WHERE
+          hotelid=#{hotelId}
+    </select>
+
+    <select id="queryByKeyword" resultType="HotelInfo">
+        SELECT
+          ownername, ownerphone, hotelid, hotelimage, hotelprovince,
+          hotelcity, favornum, hotelprice, hoteladdress
+        FROM
+          hotelinfo
+        WHERE
+          #{type} LIKE '%#{keyword}%'
+    </select>
+
+    <insert id="addHotelInfo" parameterType="HotelInfo">
+        INSERT INTO
+          hotelinfo (ownername, ownerphone, hotelimage, hotelprovince,
+          hotelcity, hotelprice, hoteladdress)
+        VALUES (#{ownerName}, #{ownerPhone},
+        #{hotelImage},
+        #{hotelProvince}, #{hotelCity},
+        #{hotelPrice}, #{hotelAddress})
+    </insert>
+
+    <delete id="deleteHotelInfo" parameterType="int">
+        DELETE FROM
+          hotelinfo
+        WHERE
+          hotelid=#{hotelId}
+    </delete>
+
+    <update id="updateHotelInfo" parameterType="HotelInfo">
+        UPDATE
+          hotelinfo
+        SET
+          ownername=#{ownerName},
+          ownerphone=#{ownerPhone},
+          hotelimage=#{hotelImage},
+          hotelprovince=#{hotelProvince},
+          hotelcity=#{hotelCity},
+          hotelprice=#{hotelPrice},
+          hoteladdress=#{hotelAddress}
+        WHERE
+          hotelid=#{hotelId}
+    </update>
+    <select id="querySix" resultType="HotelInfo">
+        SELECT * FROM hotelinfo ORDER BY favornum DESC limit 6;
+    </select>
+</mapper>
