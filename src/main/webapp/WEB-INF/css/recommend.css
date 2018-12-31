@@ -6,10 +6,9 @@
     position:relative;
     top:480px;
 }
-
-.recommend_img,
-.recommend_describe {
+.hotel{
     border: 1px solid rgb(180, 178, 178);
+    border-radius: 10px;
 }
 
 .hotel_one,
@@ -28,41 +27,41 @@
 
 .hotel {
     display: -webkit-box;
-    padding: 5px;
-    height: 152px;
-    width: 280px;
+    padding: 0px;
+    height: 150px;
+    width: 300px;
     /*测试用
             background-color: rgb(43, 223, 52);
             */
 }
 
 .hotel_one {
-    left: 20px;
+    left: 100px;
     top: 540px;
 }
 
 .hotel_two {
-    left: 420px;
+    left: 500px;
     top: 540px;
 }
 
 .hotel_three {
-    left: 820px;
+    left: 900px;
     top: 540px;
 }
 
 .hotel_four {
-    left: 20px;
+    left: 100px;
     top: 720px;
 }
 
 .hotel_five {
-    left: 420px;
+    left: 500px;
     top: 720px;
 }
 
 .hotel_six {
-    left: 820px;
+    left: 900px;
     top: 720px;
 }
 
@@ -76,4 +75,7 @@
     width:240px;
     height:24px;
     display:block;
+}
+img{
+    border-radius: 10px;
 }
