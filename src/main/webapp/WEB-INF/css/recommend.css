@@ -4,7 +4,7 @@
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    top: 480px;
+    top: 0px;
 }
 
 .hotel {
@@ -38,32 +38,32 @@
 
 .hotel_one {
     left: 100px;
-    top: 540px;
+    top: 600px;
 }
 
 .hotel_two {
     left: 500px;
-    top: 540px;
+    top: 600px;
 }
 
 .hotel_three {
     left: 900px;
-    top: 540px;
+    top: 600px;
 }
 
 .hotel_four {
     left: 100px;
-    top: 720px;
+    top: 760px;
 }
 
 .hotel_five {
     left: 500px;
-    top: 720px;
+    top: 760px;
 }
 
 .hotel_six {
     left: 900px;
-    top: 720px;
+    top: 760px;
 }
 
 .city_span {
