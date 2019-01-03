@@ -54,7 +54,7 @@ public class HotelInfoServiceImpl implements HotelInfoService {
 
     @Override
     public List<HotelInfo> queryByKeyword(String type, String keyword) {
-        return null;
+        return hotelInfoDao.queryByKeyword(type, "%" + keyword + "%");
     }
 
     @Override

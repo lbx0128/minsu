@@ -21,8 +21,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/search.css" type="text/css">
 </head>
 <body>
-<%@ include file="search.jsp" %>
+<%@ include file="navbar.jsp" %>
 <%@ include file="carousel.jsp" %>
+<%@ include file="search.jsp" %>
 <div class="recommend">
     <div style="text-align: center">
         <div class="recommend_top">今日推荐</div>
@@ -30,7 +31,7 @@
 
     <div class="recommend_main">
         <c:forEach items="${hotelSixInfos}" var="hotelSixInfo" begin="0" end="0">
-            <div class="hotel_one">
+            <div class="hotel_one" onclick="window.open('../user/particulars/'+${hotelSixInfo.hotelId})">
                 <div class="hotel">
                     <div class="recommend_img">
                         <img class="recommend_img" src=${hotelSixInfo.hotelImage} width=150 length=150>
@@ -46,7 +47,7 @@
             </div>
         </c:forEach>
         <c:forEach items="${hotelSixInfos}" var="hotelSixInfo" begin="1" end="1">
-            <div class="hotel_two">
+            <div class="hotel_two" onclick="window.open('../user/particulars/'+${hotelSixInfo.hotelId})">
                 <div class="hotel">
                     <div class="recommend_img">
                         <img class="recommend_img" src=${hotelSixInfo.hotelImage} width=150 length=150>
@@ -62,7 +63,7 @@
             </div>
         </c:forEach>
         <c:forEach items="${hotelSixInfos}" var="hotelSixInfo" begin="2" end="2">
-            <div class="hotel_three">
+            <div class="hotel_three" onclick="window.open('../user/particulars/'+${hotelSixInfo.hotelId})">
 
                 <div class="hotel">
                     <div class="recommend_img">
@@ -79,7 +80,7 @@
             </div>
         </c:forEach>
         <c:forEach items="${hotelSixInfos}" var="hotelSixInfo" begin="3" end="3">
-            <div class="hotel_four">
+            <div class="hotel_four" onclick="window.open('../user/particulars/'+${hotelSixInfo.hotelId})">
                 <div class="hotel">
                     <div class="recommend_img">
                         <img class="recommend_img" src=${hotelSixInfo.hotelImage} width=150 length=150>
@@ -95,7 +96,7 @@
             </div>
         </c:forEach>
         <c:forEach items="${hotelSixInfos}" var="hotelSixInfo" begin="4" end="4">
-            <div class="hotel_five">
+            <div class="hotel_five" onclick="window.open('../user/particulars/'+${hotelSixInfo.hotelId})">
                 <div class="hotel">
                     <div class="recommend_img">
                         <img class="recommend_img" src=${hotelSixInfo.hotelImage} width=150 length=150>
@@ -111,7 +112,7 @@
             </div>
         </c:forEach>
         <c:forEach items="${hotelSixInfos}" var="hotelSixInfo" begin="5" end="5">
-        <div class="hotel_six">
+        <div class="hotel_six" onclick="window.open('../user/particulars/'+${hotelSixInfo.hotelId})">
             <div class="hotel">
                 <div class="recommend_img">
                     <img class="recommend_img" src=${hotelSixInfo.hotelImage} width=150 length=150>
@@ -129,4 +130,5 @@
     </c:forEach>
 </div>
 </body>
+<script src="${pageContext.request.contextPath}/js/search.js"></script>
 </html>

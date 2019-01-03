@@ -66,7 +66,18 @@
         FROM
           hotelinfo
         WHERE
-          #{type} LIKE '%#{keyword}%'
+          1=1
+          <choose>
+              <when test="'ownername'.equals(type)">
+                  AND ownername LIKE #{keyword}
+              </when>
+              <when test="'ownerphone'.equals(type)">
+                  AND ownerphone LIKE #{keyword}
+              </when>
+              <otherwise>
+                  AND hoteladdress LIKE #{keyword}
+              </otherwise>
+          </choose>
     </select>
 
     <insert id="addHotelInfo" parameterType="HotelInfo">
@@ -92,11 +103,13 @@
         SET
           ownername=#{ownerName},
           ownerphone=#{ownerPhone},
-          hotelimage=#{hotelImage},
           hotelprovince=#{hotelProvince},
           hotelcity=#{hotelCity},
           hotelprice=#{hotelPrice},
-          hoteladdress=#{hotelAddress}
+          hoteladdress=#{hotelAddress},
+          <if test="hotelImage != null">
+            hotelimage=#{hotelImage}
+          </if>
         WHERE
           hotelid=#{hotelId}
     </update>

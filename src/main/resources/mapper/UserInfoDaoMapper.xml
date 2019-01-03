@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dai.dao.UserInfoDao">
+
+    <!--对应queryALL方法-->
+    <select id="queryAll" resultType="UserInfo">
+        select * from userinfo;
+    </select>
+
+    <!--对应addUser方法-->
+    <insert id="addUser" parameterType="UserInfo">
+        insert into userinfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="useraccount != null">
+                useraccount,
+            </if>
+            <if test="userpass != null">
+                userpass,
+            </if>
+            <if test="role != null">
+                role,
+            </if>
+            <if test="role == null">
+                role,
+            </if>
+            <if test="name != null">
+                name,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="age != null">
+                age,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="useraccount != null">
+                #{useraccount},
+            </if>
+            <if test="userpass != null">
+                #{userpass},
+            </if>
+            <if test="role != null">
+                #{role},
+            </if>
+            <if test="role == null">
+                1,
+            </if>
+            <if test="name != null">
+                #{name},
+            </if>
+            <if test="sex != null">
+                #{sex},
+            </if>
+            <if test="age != null">
+                #{age},
+            </if>
+            <if test="phone != null">
+                #{phone},
+            </if>
+        </trim>
+    </insert>
+
+    <!--对应deleteUser-->
+    <delete id="deleteUser" parameterType="String">
+        delete from userinfo
+        where useraccount = #{useraccount}
+    </delete>
+
+    <!--对应queryUser-->
+    <select id="queryUser" parameterType="String" resultType="UserInfo">
+        select * from userinfo
+        where useraccount = #{useraccount}
+    </select>
+
+    <!--对应updateUser-->
+    <update id="updateUser" parameterType="UserInfo">
+        update userinfo
+        <set>
+            <if test="userpass!=null">
+                userpass = #{userpass}
+            </if>
+            <if test="name!=null">
+                name = #{name}
+            </if>
+            <if test="sex!=null">
+                sex = #{sex}
+            </if>
+            <if test="age!=null">
+                age = #{age}
+            </if>
+            <if test="phone!=null">
+                phone = #{phone}
+            </if>
+        </set>
+        where useraccount = #{useraccount}
+    </update>
+
+    <!--对应userAmount-->
+    <select id="userAmount" resultType="int">
+        select count(*)
+        from userinfo
+    </select>
+
+    <!--对应queryByIndex-->
+    <select id="queryByIndex" resultType="UserInfo">
+        select *
+        from userinfo
+        limit #{offset},#{limit}
+    </select>
+
+    <!--对应queryByKeyWord-->
+    <select id="queryByKeyWord" resultType="UserInfo">
+        select *
+        from userinfo
+        where #{type} LIKE '%#{keyword}%'
+    </select>
+
+</mapper>

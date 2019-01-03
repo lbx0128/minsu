@@ -1,0 +1,16 @@
+.comment-info {
+    background: #FFF;
+    border: 1px solid #E5E5E5;
+    box-shadow: 0 5px 14px 0 rgba(0, 0, 0, .1);
+    border-radius: 10px;
+    padding: 20px;
+    width: 80%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    position: absolute;
+    top: 400px;
+}
+.comment-info-head {
+    width: 700px;
+}

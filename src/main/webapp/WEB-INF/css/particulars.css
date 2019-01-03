@@ -1,0 +1,26 @@
+.hotel-info {
+    background: #FFF;
+    border: 1px solid #E5E5E5;
+    box-shadow: 0 5px 14px 0 rgba(0, 0, 0, .1);
+    border-radius: 10px;
+    padding: 20px;
+    display: -webkit-box;
+    width: 80%;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+.hotel-info-head {
+    width: 700px;
+}
+body {
+    -webkit-font-smoothing: antialiased;
+    font-family: "-apple-system", BlinkMacSystemFont, Roboto, "Helvetica Neue", "MIcrosoft YaHei", sans-serif !important;
+    background-color: #F8F8F8;
+}
+.hotel-img{
+    width: 340px;
+    height: 210px;
+    border-radius: 10px;
+}

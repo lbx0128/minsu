@@ -38,21 +38,13 @@ public interface HotelInfoDao {
                                          @Param("city") String city);
 
     /**
-     * 关键字查询
-     * @param lowest
-     * @param highest
-     * @return
-     */
-    public List<HotelInfo> queryByPrice(int lowest, int highest);
-
-    /**
      * 根据类型关键字查询
      * @param type
      * @param keyword
      * @return
      */
-    public List<HotelInfo> queryByKeyword(String type, String keyword);
-
+    public List<HotelInfo> queryByKeyword(@Param("type") String type,
+                                          @Param("keyword") String keyword);
 
     /**
      * 查询一条记录

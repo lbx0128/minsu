@@ -5,7 +5,8 @@
   Time: 11:38
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"
+         pageEncoding="utf-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <% String basePath = request.getScheme() + "://" + request.getServerName() +
         ":" + request.getServerPort() + request.getContextPath() + "/";
@@ -14,107 +15,131 @@
 <html>
 <head>
     <base href="<%=basePath %>">
-    <title>旅馆列表</title>
+    <title></title>
     <!-- Bootstrap -->
-    <link href="${pageContext.request.contextPath}/css/bootstrap/bootstarp3.3.7.css"
-          rel="stylesheet">
-    <link href="${pageContext.request.contextPath}/css/url.css"
-          rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/hotelinfo.css" rel="stylesheet">
 </head>
 
-<h1>房间管理</h1>
-<hr>
 <body>
+    <%@include file="../include/navigation.jsp"%>
 
-    <%-- 需要一个搜索框, 只能搜索地区 --%>
-    <p>
+    <div class="content">
+        <h1>房源管理</h1>
+        <hr>
+        <%-- 需要一个搜索框, 只能搜索地区 --%>
         <select id="select-search" class="form-control">
             <option>选择类型</option>
-            <option value="ownername">房主姓名</option>
-            <option value="ownerphone">房主手机</option>
-            <option value="hoteladdress">地区</option>
+            <c:forEach items="${searchType}" var="sety">
+                <option value="${sety.key}">${sety.value}</option>
+            </c:forEach>
         </select>
-        <input type="text" id="text-search">
+        <input type="text" id="text-search" class="form-control"
+               placeholder="keywords" required="required">
         <button type="button" class="btn btn-info" id="button-search">搜索
         </button>
-    </p>
+        <a href="hotel/hotelinfos">
+            <button type="button" class="btn btn-info button-add-hotelinfo">新增
+            </button>
+        </a>
 
+        <%-- 显示信息 --%>
+        <table class="table table-hover">
+            <tr>
+                <th>房东姓名</th>
+                <th>房东手机</th>
+                <th>所在省份</th>
+                <th>所在城市</th>
+                <th>价格</th>
+                <th>图片预览</th>
+                <th>详细地址</th>
+                <th>收藏数</th>
+                <th>操作</th>
+            </tr>
+        <c:forEach items="${hotelInfos}" var="hotelinfo">
+            <tr>
+                <td>${hotelinfo.ownerName}</td>
+                <td>${hotelinfo.ownerPhone}</td>
+                <td>${hotelinfo.hotelProvince}</td>
+                <td>${hotelinfo.hotelCity}</td>
+                <td>${hotelinfo.hotelPrice}</td>
 
-    <%-- 显示信息 --%>
-    <table class="table table-hover" width="80%">
-        <tr>
-            <th>房东姓名</th>
-            <th>房东手机</th>
-            <th>所在省份</th>
-            <th>所在城市</th>
-            <th>价格</th>
-            <th>详细地址</th>
-            <th>收藏数</th>
-            <th>操作</th>
-        </tr>
-    <c:forEach items="${hotelInfos}" var="hotelinfo">
-        <tr>
-            <td>${hotelinfo.ownerName}</td>
-            <td>${hotelinfo.ownerPhone}</td>
-            <td>${hotelinfo.hotelProvince}</td>
-            <td>${hotelinfo.hotelCity}</td>
-            <td>${hotelinfo.hotelPrice}</td>
-            <td>${hotelinfo.hotelAddress}</td>
-            <td>${hotelinfo.favorNum}</td>
-            <td>
-                <a href="hotel/hotelinfos/edit/${hotelinfo.hotelId}">
-                    <button type="button" class="btn btn-info">编辑</button>
-                </a>
+                <td>
+                    <button type="button" data-toggle="modal" data-target="#myModal${hotelinfo.hotelId}">Launch</button>
+                    <div class="modal fade" tabindex="-1" role="dialog"
+                         aria-labelledby="gridSystemModalLabel" id="myModal${hotelinfo.hotelId}">
+                        <div class="modal-dialog" role="img">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <%--<h4 class="modal-title" id="gridSystemModalLabel">Modal title</h4>--%>
+                                </div>
+                                <div class="modal-body">
+                                    <img src="${hotelinfo.hotelImage}" />
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal-dialog -->
+                    </div><!-- /.modal -->
+                </td>
 
-                <a href="hotel/hotelinfos/del/${hotelinfo.hotelId}">
-                    <button type="button" class="btn btn-danger">删除</button>
-                </a>
+                <td>${hotelinfo.hotelAddress}</td>
+                <td>${hotelinfo.favorNum}</td>
+                <td>
+                    <a href="hotel/hotelinfos/edit/${hotelinfo.hotelId}">
+                        <button type="button" class="btn btn-info">编辑</button>
+                    </a>
 
-            </td>
-        </tr>
+                    <a href="hotel/hotelinfos/del/${hotelinfo.hotelId}">
+                        <button type="button" class="btn btn-danger">删除</button>
+                    </a>
 
-    </c:forEach>
-    </table>
-    共${rowNumber}条数据 当前第${pageIndex} 页 共${pageNumber}页
+                </td>
+            </tr>
 
-    <nav aria-label="...">
-        <ul class="pager">
-            <li>
+        </c:forEach>
+        </table>
+        共${rowNumber}条数据 当前第${pageIndex} 页 共${pageNumber}页
+
+        <nav aria-label="...">
+            <ul class="pager">
                 <c:choose>
                     <c:when test="${pageIndex <= 1}">
-                        <a href="hotel/hotelinfos/${pageIndex}">上一页</a>
+                        <li class="disabled">
+                            <a href="hotel/hotelinfos/${pageIndex}">上一页</a>
+                        </li>
                     </c:when>
                     <c:otherwise>
-                        <a href="hotel/hotelinfos/${pageIndex-1}">上一页</a>
+                        <li>
+                            <a href="hotel/hotelinfos/${pageIndex-1}">上一页</a>
+                        </li>
                     </c:otherwise>
                 </c:choose>
-            </li>
-            <li>
                 <c:choose>
                     <c:when test="${pageIndex >= pageNumber}">
-                        <a href="hotel/hotelinfos/${pageIndex}">下一页</a>
+                        <li class="disabled">
+                            <a href="hotel/hotelinfos/${pageIndex}">下一页</a>
+                        </li>
                     </c:when>
                     <c:otherwise>
-                        <a href="hotel/hotelinfos/${pageIndex+1}">下一页</a>
+                        <li>
+                            <a href="hotel/hotelinfos/${pageIndex+1}">下一页</a>
+                        </li>
                     </c:otherwise>
                 </c:choose>
-            </li>
-        </ul>
-    </nav>
+            </ul>
+        </nav>
 
-    <%--<c:if test="${pageIndex > 1}">--%>
-        <%--<a href="hotel/hotelinfos/${pageIndex-1}">上一页</a>--%>
-    <%--</c:if>--%>
-    <%--<c:if test="${pageIndex < pageNumber}">--%>
-        <%--<a href="hotel/hotelinfos/${pageIndex+1}">下一页</a>--%>
-    <%--</c:if>--%>
-    <input type="text" id="text-index" size="1"/>页
-    <button id="button-jump-index" class="btn btn-primary">跳转</button>
-
+        <button id="button-jump-index" class="btn btn-primary">跳转</button><input type="text" id="text-index" class="form-control"/>页
+    </div>
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-    <script src="${pageContext.request.contextPath}/js/jquery/jquery1.12.4.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
     <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="${pageContext.request.contextPath}/js/bootstrap/bootstrap3.3.7.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"></script>
+    <%--页面相关点击事件--%>
+    <%--<script src="${pageContext.request.contextPath}/js/hotelinfo.js"></script>--%>
     <script>
         $(document).ready(function () {
             // 跳转到指定页面
@@ -136,7 +161,7 @@
                 var keyword = $("#text-search").val();
                 console.log(keyword);
                 window.location.href = "hotel/hotelinfos/search/" + type +
-                    "/" + keyword;
+                    "/" + keyword + "/" + 1;
             });
         });
     </script>

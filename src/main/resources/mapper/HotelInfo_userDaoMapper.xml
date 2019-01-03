@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.dai.dao.HotelInfo_userDao">
+    <select id="queryByCity" resultType="HotelInfo">
+        SELECT
+          *
+        FROM
+          hotelinfo
+        WHERE
+          hotelcity=#{hotelcity}
+    </select>
+    <select id="queryById" resultType="HotelInfo">
+        SELECT
+          *
+        FROM
+          hotelinfo
+        WHERE
+          hotelid=#{hotelId}
+    </select>
+</mapper>

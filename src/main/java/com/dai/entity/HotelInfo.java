@@ -38,7 +38,7 @@ public class HotelInfo {
     /**
      * 价格
      */
-    private double hotelPrice;
+    private int hotelPrice;
     /**
      * 详细地址
      */
@@ -47,7 +47,10 @@ public class HotelInfo {
     public HotelInfo() {
     }
 
-    public HotelInfo(String ownername, String ownerphone, int hotelId, String hotelImage, String hotelProvince, String hotelCity, int favorNum, double hotelPrice, String hotelAddress) {
+    public HotelInfo(String ownername, String ownerphone, int hotelId,
+                     String hotelImage, String hotelProvince,
+                     String hotelCity, int favorNum, int hotelPrice,
+                     String hotelAddress) {
         this.ownerName = ownername;
         this.ownerPhone = ownerphone;
         this.hotelId = hotelId;
@@ -59,7 +62,9 @@ public class HotelInfo {
         this.hotelAddress = hotelAddress;
     }
 
-    public HotelInfo(String ownerName, String ownerPhone, String hotelImage, String hotelProvince, String hotelCity, double hotelPrice, String hotelAddress) {
+    public HotelInfo(String ownerName, String ownerPhone, String hotelImage,
+                     String hotelProvince, String hotelCity, int hotelPrice,
+                     String hotelAddress) {
         this.ownerName = ownerName;
         this.ownerPhone = ownerPhone;
         this.hotelImage = hotelImage;
@@ -125,11 +130,11 @@ public class HotelInfo {
         this.favorNum = favorNum;
     }
 
-    public double getHotelPrice() {
+    public int getHotelPrice() {
         return hotelPrice;
     }
 
-    public void setHotelPrice(double hotelPrice) {
+    public void setHotelPrice(int hotelPrice) {
         this.hotelPrice = hotelPrice;
     }
 

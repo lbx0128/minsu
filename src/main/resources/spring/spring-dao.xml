@@ -8,25 +8,6 @@
     <!-- 加载数据库属性文件 -->
     <context:property-placeholder location="classpath:jdbc.properties"/>
 
-    <!--&lt;!&ndash; 数据库连接池 c3p0 &ndash;&gt;-->
-    <!--<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">-->
-    <!--<property name="driverClass" value="${driverClass}"/>-->
-    <!--<property name="jdbcUrl" value="${url}"/>-->
-    <!--<property name="user" value="${user}"/>-->
-    <!--<property name="password" value="${password}"/>-->
-
-    <!--<property name="initialPoolSize" value="5" />-->
-    <!--&lt;!&ndash;最大连接数&ndash;&gt;-->
-    <!--<property name="maxPoolSize" value="30"/>-->
-    <!--&lt;!&ndash;最小连接数&ndash;&gt;-->
-    <!--<property name="minPoolSize" value="10"/>-->
-    <!--&lt;!&ndash;关闭连接时提交 &ndash;&gt;-->
-    <!--<property name="autoCommitOnClose" value="false"/>-->
-    <!--&lt;!&ndash;超时 &ndash;&gt;-->
-    <!--<property name="checkoutTimeout" value="1000"/>-->
-    <!--&lt;!&ndash;重试次数&ndash;&gt;-->
-    <!--<property name="acquireRetryAttempts" value="2"/>-->
-    <!--</bean>-->
     <bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
         <property name="driverClassName" value="${driverClass}"/>
         <property name="jdbcUrl" value="${url}"/>
@@ -47,36 +28,6 @@
         </property>
 
     </bean>
-
-    <!--<bean id="ds" class="com.alibaba.druid.pool.DruidDataSource"-->
-          <!--init-method="init" destroy-method="close">-->
-        <!--<property name="driverClassName" value="${driverClass}"/>-->
-        <!--<property name="url" value="${url}"/>-->
-        <!--<property name="username" value="${user}"/>-->
-        <!--<property name="password" value="${password}"/>-->
-
-        <!--<property name="initialSize" value="3"/>-->
-        <!--&lt;!&ndash;最大连接数&ndash;&gt;-->
-        <!--<property name="maxActive" value="20"/>-->
-        <!--&lt;!&ndash;最小连接数&ndash;&gt;-->
-        <!--<property name="minIdle" value="3"/>-->
-        <!--&lt;!&ndash; 最大等待时间 &ndash;&gt;-->
-        <!--<property name="maxWait" value="60000"/>-->
-        <!--&lt;!&ndash; 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 &ndash;&gt;-->
-        <!--<property name="timeBetweenEvictionRunsMillis" value="60000"/>-->
-
-        <!--&lt;!&ndash; 配置一个连接在池中最小生存的时间，单位是毫秒 &ndash;&gt;-->
-        <!--<property name="minEvictableIdleTimeMillis" value="300000"/>-->
-
-        <!--<property name="validationQuery" value="SELECT 1"/>-->
-        <!--<property name="testWhileIdle" value="true"/>-->
-        <!--<property name="testOnBorrow" value="false"/>-->
-        <!--<property name="testOnReturn" value="false"/>-->
-
-        <!--&lt;!&ndash; 打开PSCache，并且指定每个连接上PSCache的大小 &ndash;&gt;-->
-        <!--<property name="poolPreparedStatements" value="true"/>-->
-        <!--<property name="maxPoolPreparedStatementPerConnectionSize" value="20"/>-->
-    <!--</bean>-->
 
     <!--配置SqlSessionFactoryBean-->
     <bean id="sqlSessionFactoryBean"

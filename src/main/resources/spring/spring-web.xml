@@ -24,6 +24,20 @@
     <mvc:resources mapping="/js/**" location="/WEB-INF/js/"/>
     <mvc:resources mapping="/admin/**" location="/WEB-INF/admin/"/>
     <mvc:resources mapping="/image/**" location="/WEB-INF/image/"/>
+    <mvc:resources mapping="/fonts/**" location="/WEB-INF/css/fonts/" />
+
+    <!--拦截器-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <!--默认拦截的连接-->
+            <mvc:mapping path="/hotel/**" />
+            <!--<mvc:mapping path="/foreproduct"/>-->
+            <!--不拦截的连接-->
+            <bean class="com.dai.interceptor.AdminInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
     <!-- 配置jsp 显示ViewResolver-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
@@ -31,5 +45,11 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!-- 配置最大上传图片大小 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="1048576" />
+        <property name="defaultEncoding" value="utf-8"/>
+    </bean>
 
 </beans>
